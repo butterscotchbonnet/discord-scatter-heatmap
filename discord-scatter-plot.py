@@ -14,16 +14,15 @@ import seaborn as sns
 from math import log10, floor
 
 # User parameters
-# rot = os.path.dirname(os.path.realpath(__file__))
-root = "./package/messages" # Uncomment to use PWD rather than script location
-yourNameHere = "Trisk"
-windowSize = 60*20  # Length (in seconds) that the heatmap uses to clump message frequency (lower if it runs slow)
+yourNameHere = "@your.name.here"
+windowSize = 60*20  # Length (in seconds) that the heatmap uses to clump message frequency
 timeGap = 20  # Time between messages (in seconds) that maps to the highest message frequency
 snsCmapName = "rocket_r"  # https://seaborn.pydata.org/tutorial/color_palettes.html#perceptually-uniform-palettes
 heatmapping = True
 renderHorizontal = True
 
 dates = []
+root = "./package/messages"
 for dir in os.listdir(root):
     dir = os.path.join(root, dir)
     if os.path.isdir(dir):
