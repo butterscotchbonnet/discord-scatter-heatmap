@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Download your data dump and place this file in the "messages" folder of your data dump.
+# Download your data dump and place this file just outside the "package" folder provided by Discord.
 # Run it using python
 
 from datetime import datetime, timedelta
