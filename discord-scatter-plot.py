@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Download your data dump and place this file just outside the "package" folder provided by Discord.
+# Download your data dump and place this file in the "messages" folder of your data dump.
 # Run it using python
 
 from datetime import datetime, timedelta
@@ -14,8 +14,8 @@ import seaborn as sns
 from math import log10, floor
 
 # User parameters
-root = os.path.dirname(os.path.realpath(__file__))
-# root = "." # Uncomment to use PWD rather than script location
+# rot = os.path.dirname(os.path.realpath(__file__))
+root = "./package/messages" # Uncomment to use PWD rather than script location
 yourNameHere = "Trisk"
 windowSize = 60*20  # Length (in seconds) that the heatmap uses to clump message frequency (lower if it runs slow)
 timeGap = 20  # Time between messages (in seconds) that maps to the highest message frequency
@@ -25,6 +25,7 @@ renderHorizontal = True
 
 dates = []
 for dir in os.listdir(root):
+    dir = os.path.join(root, dir)
     if os.path.isdir(dir):
         print(f"reading messages for channel: {dir}")
         if "messages.csv" not in os.listdir(dir):
@@ -50,8 +51,7 @@ messageDensity = []
 print("processing dates")
 dates = sorted(dates)
 maxDensity = windowSize/timeGap
-for i in range(len(dates)):
-    date = dates[i]
+for i, date in enumerate(dates):
     dateNoTime = datetime(date.year, date.month, date.day)
     days.append(dateNoTime)
     timeNoDate = datetime(1970, 1, 1, date.hour, date.minute, date.second)
